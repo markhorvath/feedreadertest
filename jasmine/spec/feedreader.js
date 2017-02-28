@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
@@ -138,8 +137,7 @@ $(function() {
     });
 
 }());
-||||||| merged common ancestors
-=======
+
 /* feedreader.js
  *
  * This is the spec file that Jasmine will read and contains
@@ -260,18 +258,23 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
     describe('New Feed Selection', function() {
+        var feed;
 
         beforeEach(function(done) {
-            loadFeed(0, function() {
+            loadFeed(1, function() {
+                feed = $('.feed').html();
                 done();
             });
         });
 
-        it("content changes when a new feed is loaded", function() {
-
+        it("content changes when a new feed is loaded", function(done) {
+            loadFeed(0, function() {
+                expect(feed).not.toEqual($('.feed').html());
+                done();
+            });
         });
 
     });
 
 }());
->>>>>>> 885591d28cab3bdd9996f20a9f416f1994485a8d
+
